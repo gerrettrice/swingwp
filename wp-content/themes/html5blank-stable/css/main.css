@@ -1,0 +1,560 @@
+@font-face {
+    font-family: "Superstar M54";
+    src: url(../fonts/superstar_m54.ttf);
+}
+
+html {
+    box-sizing: border-box;
+    height: 100%;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+    margin: 0;
+}
+
+body {
+    height: 100%;
+}
+
+.container {
+    padding: 1rem;
+    max-width: 1100px;
+    margin: auto;
+}
+
+h1 {
+    font-family: "Superstar M54";
+    font-size: 2.75rem;
+    letter-spacing: 0.1rem;
+}
+
+h1.page_header {
+    color: rgb(0, 22, 53);
+}
+
+h2 {
+    font-family: "Raleway";
+    font-weight: 600;
+    font-style: italic;
+}
+
+h3 {
+    font-family: "Raleway";
+    font-weight: 700;
+}
+
+p {
+    font-family: "Raleway";
+    font-weight: 400;
+    line-height: 1.5;
+    color: #454545;
+}
+
+p a {
+    text-decoration: none;
+    color: #454545;
+    padding-bottom: -1.5rem;
+    border-bottom: 0.2rem solid yellow;
+}
+
+p.about_text {
+    margin-bottom: 3rem;
+}
+
+hr {
+    margin-top: 0.25rem;
+    margin-bottom: 1rem;
+}
+
+.box_hr {
+    border: 2px solid rgb(0, 22, 53);
+}
+
+header {
+    width: 100%;
+    background: rgb(25, 25, 25);
+    margin: auto;
+    grid-template-rows: auto;
+    text-align: center;
+}
+
+#svg_logo {
+    width: 20%;
+    max-width: 100px;
+    padding: 0.5rem 0 0.25rem 0;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+}
+
+nav div {
+    font-size: 0.75rem;
+}
+
+nav div:hover {
+    background: rgb(0, 50, 50);
+}
+
+section.slider {
+    display: block;
+}
+
+.black_gradient {
+    position: absolute;
+    bottom: 0;
+    height: 500px;
+    z-index: 1;
+    left: 0;
+    right: 0;
+
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,1+100 */
+    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#000000', GradientType=0); /* IE6-9 */
+}
+
+.slider_frame {
+    padding: 1rem 1rem;
+    background-size: cover;
+    height: 500px;
+}
+
+#frame1 {
+    background-position: 50% 20%;
+    background-image: url(../img/pitch.jpg);
+}
+
+#frame2 {
+    background-position: 40% 50%;
+    background-image: url(../img/coaching.jpg);
+}
+
+#frame3 {
+    background-position: 55% 50%;
+    background-image: url(../img/swing.png);
+}
+
+.slider_heading {
+    max-width: 75%;
+    color: white;
+    margin-top: 120px;
+    position: relative;
+    z-index: 10;
+    animation: fade 1s ease-in;
+}
+
+@keyframes fade {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.slider_text {
+    max-width: 75%;
+    color: white;
+    position: relative;
+    z-index: 10;
+}
+
+.slider_button {
+    display: inline-block;
+    background: white;
+    margin: 1rem 0;
+    padding: 0.25rem 0.5rem;
+    color: black;
+    text-decoration: none;
+    position: relative;
+    z-index: 10;
+    font-family: "Raleway", sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    border: none;
+    transition: all 0.25s ease-in-out;
+}
+
+.slider_button:hover {
+    background: #b3b3b3;
+}
+
+.hero_image {
+    height: 400px;
+    background-size: cover;
+    background-position: center center;
+    margin-bottom: 1.5rem;
+}
+
+#hero_about {
+    background-image: url(../img/facility.jpg);
+}
+
+#map {
+    margin-bottom: 0;
+}
+
+.contact_phone {
+    background: rgb(13, 70, 53);
+    text-align: center;
+    padding: 0.5rem;
+    width: 100%;
+    color: white;
+    font-family: "Raleway", sans-serif;
+    font-weight: 600;
+}
+
+.contact_phone a {
+    color: white;
+    text-decoration: none;
+}
+
+.grid {
+    display: grid;
+    margin: auto;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    grid-gap: 1rem;
+    padding: 1rem;
+    max-width: 1100px;
+}
+
+.box {
+    width: 100%;
+    margin-bottom: 1rem;
+    grid-column-start: 1;
+    grid-column-end: span col12-start;
+}
+
+#grid_about {
+    display: grid;
+    margin: auto;
+    margin-top: 2rem;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-gap: 1rem;
+    max-width: 1100px;
+    margin-bottom: 3rem;
+}
+
+.headshot {
+    grid-column-start: auto;
+    grid-column-end: auto;
+}
+
+.headshot img {
+    border-radius: 50%;
+    width: 100%;
+}
+
+p.headshot_text {
+    width: 100%;
+    grid-column-start: auto;
+    grid-column-end: auto;
+}
+
+section.teams {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.teams div {
+    flex-grow: 1;
+    text-align: center;
+    overflow: hidden;
+    padding: 1rem;
+}
+
+.teams div img {
+    max-width: 250px;
+}
+
+.button {
+    display: inline-block;
+    background: rgb(13, 70, 53);
+    margin: 1rem 0;
+    padding: 0.25rem 0.5rem;
+    color: white;
+    text-decoration: none;
+    position: relative;
+    font-family: "Raleway", sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    border: none;
+    transition: all 0.25s ease-in-out;
+}
+
+.button:hover {
+    background: rgb(0, 50, 50);
+}
+
+/* Blog */
+#blog_container {
+    background-color: blue;
+    margin-bottom: 2rem;
+}
+
+.blog_grid {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.post {
+    margin-bottom: 2rem;
+}
+
+.post_featured_image {
+    background-color: yellow;
+    height: 250px;
+    margin-bottom: 0.5rem;
+}
+
+#widget_sidebar div {
+    font-family: "Raleway";
+    font-weight: 600;
+    color: black;
+}
+
+.sidebar_odd {
+    background-color: lightgrey;
+    padding: 0.5rem;
+}
+
+.sidebar_even {
+    background-color: grey;
+    padding: 0.5rem;
+}
+
+@media screen and (min-width: 750px) {
+    #blog_container {
+        margin-bottom: 0;
+        margin-right: 2rem;
+    }
+
+    .blog_grid {
+        grid-template-columns: 2fr 1fr;
+        grid-gap: 6rem;
+    }
+}
+
+footer {
+    background: rgb(25, 25, 25);
+    text-align: center;
+    padding: 1rem;
+}
+
+form {
+    max-width: 700px;
+    margin: auto;
+    margin-top: 2rem;
+}
+
+input {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    outline: none;
+    font-family: "Raleway", sans-serif;
+    font-size: 0.9rem;
+}
+
+.social_bar {
+    margin-top: 2rem;
+}
+
+.social_bar a {
+    text-decoration: none;
+}
+
+.social_media_icon {
+    max-width: 30px;
+    margin: 0 1rem;
+}
+
+#submit {
+    display: block;
+    width: 50%;
+    padding: 0.5rem;
+    margin: 1rem auto;
+    background: rgb(13, 70, 53);
+    border: none;
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: all 0.25s ease-in-out;
+    cursor: pointer;
+}
+
+#submit:hover {
+    background: rgb(0, 50, 50);
+}
+
+/* Hidden */
+.mobile_hidden {
+    display: none;
+}
+
+/* Tablet */
+
+@media screen and (min-width: 650px) {
+    nav div {
+        font-size: 1rem;
+    }
+
+    .grid {
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 4rem;
+        margin-bottom: 2rem;
+    }
+
+    .box {
+        width: 100%;
+        grid-column-start: auto;
+        grid-column-end: auto;
+    }
+
+    #grid_about {
+        grid-template-columns: 1fr 2fr 1fr 2fr;
+    }
+
+    .headshot {
+        grid-column-start: auto;
+        grid-column-end: auto;
+    }
+
+    p.headshot_text {
+        grid-column-start: auto;
+        grid-column-end: auto;
+    }
+}
+
+/* Laptop */
+
+@media screen and (min-width: 1000px) {
+    .container {
+        padding: 0;
+        margin-bottom: 4rem;
+    }
+
+    nav div {
+        font-size: 1.1rem;
+    }
+
+    .grid {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 4rem;
+        margin-bottom: 4rem;
+    }
+
+    .box {
+        width: 100%;
+        grid-column-start: auto;
+        grid-column-end: auto;
+    }
+
+    #grid_about {
+        grid-gap: 2.5rem;
+    }
+
+    .slider_content {
+        max-width: 1100px;
+        margin: auto;
+    }
+
+    .slider_heading {
+        margin-top: 250px;
+    }
+
+    .slider_button {
+        padding: 0.5rem 1rem;
+    }
+
+    .button {
+        padding: 0.5rem 1rem;
+    }
+
+    .post_featured_image {
+        height: 350px;
+    }
+
+    /* INTERIOR PAGES */
+
+    .hero_image {
+        height: 450px;
+        margin-bottom: 2rem;
+    }
+
+    footer {
+        padding: 2rem 0;
+    }
+}
+
+/* Desktop */
+
+@media screen and (min-width: 1600px) {
+    .container {
+        max-width: 1500px;
+    }
+
+    nav div {
+        font-size: 1.5rem;
+    }
+
+    .black_gradient {
+        height: 700px;
+
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,1+100 */
+        background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#000000', GradientType=0); /* IE6-9 */
+    }
+
+    .slider_frame {
+        padding: 1rem 0;
+        background-size: cover;
+        height: 700px;
+    }
+
+    .slider_heading {
+        margin-top: 400px;
+    }
+
+    .slider_content {
+        max-width: 1500px;
+    }
+
+    .grid {
+        max-width: 1500px;
+    }
+
+    #grid_about {
+        max-width: 1500px;
+    }
+
+    .hero_image {
+        height: 600px;
+        margin-bottom: 3rem;
+    }
+
+    #grid_about {
+        grid-template-columns: 1fr 2fr 1fr 2fr 1fr 2fr;
+    }
+
+    .headshot {
+        grid-column-start: auto;
+        grid-column-end: auto;
+    }
+
+    .headshot_text {
+        grid-column-start: auto;
+        grid-column-end: auto;
+    }
+}
