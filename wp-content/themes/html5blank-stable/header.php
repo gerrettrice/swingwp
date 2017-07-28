@@ -56,11 +56,9 @@
             </svg>
 
             <nav>
-                <div id="home">Home</div>
-                <div id="about">About</div>
-                <div id="services">Services</div>
-                <div id="blog">Blog</div>
-                <div id="contact">Contact</div>
+                <?php html5blank_nav();
+            //    echo strip_tags(wp_nav_menu( $menuParameters ), '<a>' );
+                    ?>
             </nav>
 
         </header>

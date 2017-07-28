@@ -69,34 +69,27 @@ function html5blank_nav()
 	array(
 		'theme_location'  => 'header-menu',
 		'menu'            => '',
-		'container'       => 'div',
 		'container_class' => 'menu-{menu slug}-container',
 		'container_id'    => '',
 		'menu_class'      => 'menu',
 		'menu_id'         => '',
-		'echo'            => true,
 		'fallback_cb'     => 'wp_page_menu',
 		'before'          => '',
 		'after'           => '',
 		'link_before'     => '',
 		'link_after'      => '',
-		'items_wrap'      => '%3$s',
-		'depth'           => 0,
-		'walker'          => ''
+		'walker'          => '',
+        'container'       => 'div',
+        //'echo'            => false,
+        'items_wrap'      => '<ul>%3$s</ul>',
+        'depth'           => 0,
 		)
 	);
 }
 
 // Load HTML5 Blank scripts (header.php)
-function html5blank_header_scripts()
-{
+function html5blank_header_scripts() {
     if ($GLOBALS['pagenow'] != 'wp-login.php' && !is_admin()) {
-
-    	wp_register_script('conditionizr', get_template_directory_uri() . '/js/lib/conditionizr-4.3.0.min.js', array(), '4.3.0'); // Conditionizr
-        wp_enqueue_script('conditionizr'); // Enqueue it!
-
-        wp_register_script('modernizr', get_template_directory_uri() . '/js/lib/modernizr-2.7.1.min.js', array(), '2.7.1'); // Modernizr
-        wp_enqueue_script('modernizr'); // Enqueue it!
 
         wp_register_script('slickjs', get_template_directory_uri() . '/slick/slick.min.js', array('jquery'), '1.0.0', true); // Custom scripts
         wp_enqueue_script('slickjs'); // Enqueue it!
@@ -107,8 +100,7 @@ function html5blank_header_scripts()
 }
 
 // Load HTML5 Blank conditional scripts
-function html5blank_conditional_scripts()
-{
+function html5blank_conditional_scripts() {
     if (is_page('pagenamehere')) {
         wp_register_script('scriptname', get_template_directory_uri() . '/js/scriptname.js', array('jquery'), '1.0.0'); // Conditional script(s)
         wp_enqueue_script('scriptname'); // Enqueue it!
@@ -267,7 +259,7 @@ function html5wp_pagination()
 // Custom Excerpts
 function html5wp_index($length) // Create 20 Word Callback for Index page Excerpts, call using html5wp_excerpt('html5wp_index');
 {
-    return 20;
+    return 50;
 }
 
 // Create 40 Word Callback for Custom Post Excerpts, call using html5wp_excerpt('html5wp_custom_post');
@@ -297,7 +289,7 @@ function html5wp_excerpt($length_callback = '', $more_callback = '')
 function html5_blank_view_article($more)
 {
     global $post;
-    return '... <a class="view-article" href="' . get_permalink($post->ID) . '">' . __('View Article', 'html5blank') . '</a>';
+    return '... <a class="view-article" href="' . get_permalink($post->ID) . '">' . __('<br/> Read More', 'html5blank') . '</a>';
 }
 
 // Remove Admin bar
@@ -442,70 +434,66 @@ add_shortcode('html5_shortcode_demo_2', 'html5_shortcode_demo_2'); // Place [htm
 \*------------------------------------*/
 
 // Create 1 Custom Post type for a Demo, called HTML5-Blank
-// function create_post_type_html5()
-// {
-//     register_taxonomy_for_object_type('category', 'html5-blank'); // Register Taxonomies for Category
-//     register_taxonomy_for_object_type('post_tag', 'html5-blank');
-//     register_post_type('html5-blank', // Register Custom Post Type
-//         array(
-//         'labels' => array(
-//             'name' => __('HTML5 Blank Custom Post', 'html5blank'), // Rename these to suit
-//             'singular_name' => __('HTML5 Blank Custom Post', 'html5blank'),
-//             'add_new' => __('Add New', 'html5blank'),
-//             'add_new_item' => __('Add New HTML5 Blank Custom Post', 'html5blank'),
-//             'edit' => __('Edit', 'html5blank'),
-//             'edit_item' => __('Edit HTML5 Blank Custom Post', 'html5blank'),
-//             'new_item' => __('New HTML5 Blank Custom Post', 'html5blank'),
-//             'view' => __('View HTML5 Blank Custom Post', 'html5blank'),
-//             'view_item' => __('View HTML5 Blank Custom Post', 'html5blank'),
-//             'search_items' => __('Search HTML5 Blank Custom Post', 'html5blank'),
-//             'not_found' => __('No HTML5 Blank Custom Posts found', 'html5blank'),
-//             'not_found_in_trash' => __('No HTML5 Blank Custom Posts found in Trash', 'html5blank')
-//         ),
-//         'public' => true,
-//         'hierarchical' => true, // Allows your posts to behave like Hierarchy Pages
-//         'has_archive' => true,
-//         'supports' => array(
-//             'title',
-//             'editor',
-//             'excerpt',
-//             'thumbnail'
-//         ), // Go to Dashboard Custom HTML5 Blank post for supports
-//         'can_export' => true, // Allows export in Tools > Export
-//         'taxonomies' => array(
-//             'post_tag',
-//             'category'
-//         ) // Add Category and Post Tags support
-//     ));
-// }
 
-add_action( 'init', 'create_posttype' );
-function create_posttype() {
-  register_post_type( 'prostaff',
-    array(
-      'labels' => array(
-          'name'               => _x( 'Pro Staff Profiles', 'post type general name' ),
-          'singular_name'      => _x( 'Pro Staff Profile', 'post type singular name' ),
-          'add_new'            => _x( 'Add New', 'Pro Staff Profile' ),
-          'add_new_item'       => __( 'Add New Pro Staff Profile' ),
-          'edit_item'          => __( 'Edit Pro Staff Profile' ),
-          'new_item'           => __( 'New Pro Staff Profile' ),
-          'all_items'          => __( 'All Pro Staff Profiles' ),
-          'view_item'          => __( 'View Pro Staff Profile' ),
-          'search_items'       => __( 'Search Pro Staff Profiles' ),
-          'not_found'          => __( 'No Pro Staff Profiles found' ),
-          'not_found_in_trash' => __( 'No Pro Staff Profiles found in the Trash' ),
-          'parent_item_colon'  => '',
-          'menu_name'          => 'Pro Staff Profiles'
-      ),
-      'labels'        => $labels,
-      'description'   => 'Pro Staff profiles with headshot and bio',
-      'public'        => true,
-      'menu_position' => 5,
-      'supports'      => array( 'title', 'editor', 'thumbnail', 'excerpt', 'comments' ),
-      'has_archive'   => false,
-    )
-  );
+function create_post_type_html5()
+    {
+
+    // Custom Post Type -- Pro Staff Profiles
+
+      register_post_type( 'prostaff',
+        array(
+          'labels' => array(
+              'name'               => _x( 'Pro Staff Profiles', 'post type general name' ),
+              'singular_name'      => _x( 'Pro Staff Profile', 'post type singular name' ),
+              'add_new'            => _x( 'Add New', 'Pro Staff Profile' ),
+              'add_new_item'       => __( 'Add New Pro Staff Profile' ),
+              'edit_item'          => __( 'Edit Pro Staff Profile' ),
+              'new_item'           => __( 'New Pro Staff Profile' ),
+              'all_items'          => __( 'All Pro Staff Profiles' ),
+              'view_item'          => __( 'View Pro Staff Profile' ),
+              'search_items'       => __( 'Search Pro Staff Profiles' ),
+              'not_found'          => __( 'No Pro Staff Profiles found' ),
+              'not_found_in_trash' => __( 'No Pro Staff Profiles found in the Trash' ),
+              'parent_item_colon'  => '',
+              'menu_name'          => 'Pro Staff Profiles'
+          ),
+          'description'   => 'Pro Staff profiles with headshot and bio',
+          'hierarchical'  => true,
+          'public'        => true,
+          'menu_position' => 5,
+          'supports'      => array( 'title', 'editor', 'thumbnail', 'excerpt', 'comments' ),
+          'has_archive'   => false,
+        )
+      );
+
+
+    // Custom Post Type -- Teams
+
+        register_post_type( 'teams',
+          array(
+            'labels' => array(
+                'name'               => _x( 'Teams', 'post type general name' ),
+                'singular_name'      => _x( 'Team', 'post type singular name' ),
+                'add_new'            => _x( 'Add New', 'Team' ),
+                'add_new_item'       => __( 'Add New Team' ),
+                'edit_item'          => __( 'Edit Team' ),
+                'new_item'           => __( 'New Team' ),
+                'all_items'          => __( 'All Teams' ),
+                'view_item'          => __( 'View Team' ),
+                'search_items'       => __( 'Search Teams' ),
+                'not_found'          => __( 'No Teams found' ),
+                'not_found_in_trash' => __( 'No Teams found in the Trash' ),
+                'parent_item_colon'  => '',
+                'menu_name'          => 'Teams'
+            ),
+            'description'   => 'Teams training with us - shows featured image',
+            'hierarchical'  => true,
+            'public'        => true,
+            'menu_position' => 6,
+            'supports'      => array( 'title', 'editor', 'thumbnail', 'excerpt', 'comments' ),
+            'has_archive'   => false,
+          )
+      );
 }
 
 /*------------------------------------*\

@@ -60,7 +60,7 @@ p a {
     border-bottom: 0.2rem solid yellow;
 }
 
-p.about_text {
+.about_text {
     margin-bottom: 3rem;
 }
 
@@ -87,16 +87,36 @@ header {
     padding: 0.5rem 0 0.25rem 0;
 }
 
-nav {
+nav ul {
     display: flex;
     flex-direction: row;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    justify-content: space-around;
 }
 
-nav div {
+nav li {
     font-size: 0.75rem;
+    flex: 1;
 }
 
-nav div:hover {
+nav a {
+    text-decoration: none;
+    color: white;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #0d4635;
+    padding: 0.5rem 0;
+    font-family: "Raleway", sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: white;
+    transition: all 0.25s ease-in-out;
+}
+
+nav a:hover {
     background: rgb(0, 50, 50);
 }
 
@@ -297,7 +317,6 @@ section.teams {
 
 /* Blog */
 #blog_container {
-    background-color: blue;
     margin-bottom: 2rem;
 }
 
@@ -311,9 +330,27 @@ section.teams {
 }
 
 .post_featured_image {
-    background-color: yellow;
+    background-size: cover;
+    background-position: center center;
     height: 250px;
     margin-bottom: 0.5rem;
+}
+
+.post_title a {
+    font-family: "Raleway";
+    font-weight: 600;
+    font-style: italic;
+    text-decoration: none;
+    color: #cc0000;
+}
+
+.date {
+    font-family: "Raleway";
+    font-weight: 600;
+}
+
+.post_excerpt {
+    margin-top: 1rem;
 }
 
 #widget_sidebar div {
@@ -404,7 +441,7 @@ input {
 /* Tablet */
 
 @media screen and (min-width: 650px) {
-    nav div {
+    nav li {
         font-size: 1rem;
     }
 
@@ -443,7 +480,7 @@ input {
         margin-bottom: 4rem;
     }
 
-    nav div {
+    nav li {
         font-size: 1.1rem;
     }
 
@@ -503,7 +540,7 @@ input {
         max-width: 1500px;
     }
 
-    nav div {
+    nav li {
         font-size: 1.5rem;
     }
 

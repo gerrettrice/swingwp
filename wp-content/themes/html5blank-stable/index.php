@@ -1,20 +1,28 @@
-<?php get_header(); ?>
+<?php
+/*
+Template Name: Blog
+*/
+get_header(); ?>
 
-	<main role="main">
+<div class="container">
 
-        <!-- section -->
-		<section>
+    <h1 class="page_header"><?php _e( 'Blog Posts', 'html5blank' ); ?></h1>
 
-			<h1><?php _e( 'Latest Posts', 'html5blank' ); ?></h1>
+    <div class="blog_grid">
 
-			<?php get_template_part('loop'); ?>
+        <div id="blog_container">
 
-			<?php get_template_part('pagination'); ?>
+            <?php get_template_part('loop'); ?>
 
-		</section>
-		<!-- /section -->
-	</main>
+            <?php get_template_part('pagination'); ?>
 
-<?php get_sidebar(); ?>
+        </div>
+
+        <?php get_sidebar(); ?>
+
+    </div>
+
+
+</div>
 
 <?php get_footer(); ?>

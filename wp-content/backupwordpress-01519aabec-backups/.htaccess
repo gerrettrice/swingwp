@@ -4,7 +4,7 @@
 
 <IfModule mod_rewrite.c>
 RewriteEngine On
-RewriteCond %{QUERY_STRING} !key=01519aabec3dcbff80b4b23b4a773fbc
+RewriteCond %{QUERY_STRING} !key=833dbc8760bdd423d0aac12e75edd5b7
 RewriteRule (.*) - [F]
 </IfModule>
 
