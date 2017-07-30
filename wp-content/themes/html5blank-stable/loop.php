@@ -28,6 +28,9 @@
             <?php html5wp_excerpt('html5wp_index'); // Build your custom callback length in functions.php ?>
         </div>
 
+        <!-- Read More Button -->
+        <a class="blog_button" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">Read More</a>
+
 		<?php edit_post_link(); ?>
 
 	</article>

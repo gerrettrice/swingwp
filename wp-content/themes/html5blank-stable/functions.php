@@ -268,6 +268,12 @@ function html5wp_custom_post($length)
     return 40;
 }
 
+// Create Callback for Slider Excerpts, call using slider_excerpt('slider_excerpt_length');
+function slider_excerpt_length($length)
+{
+    return 20;
+}
+
 // Create the Custom Excerpts callback
 function html5wp_excerpt($length_callback = '', $more_callback = '')
 {
@@ -285,12 +291,28 @@ function html5wp_excerpt($length_callback = '', $more_callback = '')
     echo $output;
 }
 
-// Custom View Article link to Post
-function html5_blank_view_article($more)
+// Slider Excerpt
+function slider_excerpt($length_callback = '', $more_callback = '')
 {
     global $post;
-    return '... <a class="view-article" href="' . get_permalink($post->ID) . '">' . __('<br/> Read More', 'html5blank') . '</a>';
+    if (function_exists($length_callback)) {
+        add_filter('excerpt_length', $length_callback);
+    }
+    if (function_exists($more_callback)) {
+        add_filter('excerpt_more', $more_callback);
+    }
+    $output = get_the_excerpt();
+    $output = apply_filters('wptexturize', $output);
+    $output = apply_filters('convert_chars', $output);
+    echo $output;
 }
+
+// Custom View Article link to Post
+// function html5_blank_view_article($more)
+// {
+//     global $post;
+//     return '... <a class="view-article" href="' . get_permalink($post->ID) . '">' . __('<br/> Read More', 'html5blank') . '</a>';
+// }
 
 // Remove Admin bar
 function remove_admin_bar()
@@ -494,7 +516,75 @@ function create_post_type_html5()
             'has_archive'   => false,
           )
       );
+
+      // Custom Post Type -- Staff Contacts
+
+          register_post_type( 'staff_contact',
+            array(
+              'labels' => array(
+                  'name'               => _x( 'Staff Contacts', 'post type general name' ),
+                  'singular_name'      => _x( 'Staff Contact', 'post type singular name' ),
+                  'add_new'            => _x( 'Add New', 'Staff Contact' ),
+                  'add_new_item'       => __( 'Add New Staff Contact' ),
+                  'edit_item'          => __( 'Edit Staff Contact' ),
+                  'new_item'           => __( 'New Staff Contact' ),
+                  'all_items'          => __( 'All Staff Contacts' ),
+                  'view_item'          => __( 'View Staff Contact' ),
+                  'search_items'       => __( 'Search Staff Contacts' ),
+                  'not_found'          => __( 'Staff Contacts found' ),
+                  'not_found_in_trash' => __( 'Staff Contacts found in the Trash' ),
+                  'parent_item_colon'  => '',
+                  'menu_name'          => 'Staff Contacts'
+              ),
+              'description'   => 'Administrative staff contacts and headshots',
+              'hierarchical'  => true,
+              'public'        => true,
+              'menu_position' => 7,
+              'supports'      => array( 'title', 'editor', 'thumbnail', 'excerpt', 'comments' ),
+              'has_archive'   => false,
+            )
+        );
+
+        register_post_type( 'service',
+          array(
+            'labels' => array(
+                'name'               => _x( 'Services', 'post type general name' ),
+                'singular_name'      => _x( 'Service', 'post type singular name' ),
+                'add_new'            => _x( 'Add New', 'Service' ),
+                'add_new_item'       => __( 'Add New Service' ),
+                'edit_item'          => __( 'Edit Service' ),
+                'new_item'           => __( 'New Service' ),
+                'all_items'          => __( 'All Services' ),
+                'view_item'          => __( 'View Service' ),
+                'search_items'       => __( 'Search Pro Staff Services' ),
+                'not_found'          => __( 'No Services found' ),
+                'not_found_in_trash' => __( 'No Services found in the Trash' ),
+                'parent_item_colon'  => '',
+                'menu_name'          => 'Services'
+            ),
+            'description'   => 'Services offered by Swing!',
+            'hierarchical'  => true,
+            'public'        => true,
+            'menu_position' => 8,
+            'supports'      => array( 'title', 'editor', 'thumbnail', 'excerpt', 'comments' ),
+            'has_archive'   => false,
+          )
+        );
 }
+
+/*------------------------------------*\
+	Custom Taxonomy
+\*------------------------------------*/
+
+// register_taxonomy(
+//     'featured_content',    // Taxonomy
+//     'post',             // Object Type
+//     array(
+//         'label' => __( 'Featured Content' ),
+//         'rewrite' => array( 'slug' => 'type' ),
+//         'hierarchical' => true, // Is this taxonomy hierarchical like categories or not hierarchical like tags.
+//     )
+// );
 
 /*------------------------------------*\
 	ShortCode Functions

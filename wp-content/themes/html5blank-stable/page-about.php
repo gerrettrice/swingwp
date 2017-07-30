@@ -9,7 +9,10 @@ get_header(); ?>
 <!-- CONTENT HERE -->
 
     <!-- Featured Image -->
-    <section id="hero_about" class="hero_image"></section>
+    <?php if ( has_post_thumbnail()) : // Check if thumbnail exists ?>
+        <?php $backgroundImg = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'full' );?>
+        <section id="hero_about" class="hero_image" style="background: url('<?php echo $backgroundImg[0]; ?>') no-repeat;background-size: cover;background-position: center top;"></section>
+    <?php endif; ?>
 
     <!-- Site Container -->
     <div class="container">
@@ -55,7 +58,7 @@ get_header(); ?>
         <?php endif; ?>
         <!-- End of Custom Post Type -->
 
-        <h2> Teams Training with Us
+        <h2> Teams Training with Us</h2>
 
         <!-- Custom Post Type - Teams -->
         <?php $query = new WP_Query( array(

@@ -28,13 +28,13 @@
                 <div class="social_bar">
 
                     <a href="https://www.facebook.com/pages/Swing-Baseball-and-Softball-Training-Center/678470655687358" target="_blank">
-                        <img class="social_media_icon" alt="Facebook" src="img/facebook.png">
+                        <img class="social_media_icon" alt="Facebook" src="http://localhost/wp-content/uploads/2017/07/facebook.png">
                     </a>
                     <a href="http://www.twitter.com/" target="_blank">
-                        <img class="social_media_icon" alt="Twitter" src="img/twitter.png">
+                        <img class="social_media_icon" alt="Twitter" src="http://localhost/wp-content/uploads/2017/07/twitter.png">
                     </a>
                     <a href="http://www.instagram.com/" target="_blank">
-                        <img class="social_media_icon" alt="Instagram" src="img/instagram.png">
+                        <img class="social_media_icon" alt="Instagram" src="http://localhost/wp-content/uploads/2017/07/instagram.png">
                     </a>
 
                 </div>

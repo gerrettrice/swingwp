@@ -2,24 +2,22 @@
 
 <div class="container">
 
-	<main role="main">
+    <h1 class="page_header"><?php _e( 'Archives', 'html5blank' ); ?></h1>
 
-		<!-- section -->
-		<section>
+        <div class="blog_grid">
 
-			<h1><?php _e( 'Archives', 'html5blank' ); ?></h1>
+            <div id="blog_container">
 
-			<?php get_template_part('loop'); ?>
+                <?php get_template_part('loop'); ?>
 
-			<?php get_template_part('pagination'); ?>
+                <?php get_template_part('pagination'); ?>
 
+            </div>
 
-		</section>
-		<!-- /section -->
-	</main>
+            <?php get_sidebar(); ?>
+
+        </div>
 
 </div>
-
-<?php get_sidebar(); ?>
 
 <?php get_footer(); ?>

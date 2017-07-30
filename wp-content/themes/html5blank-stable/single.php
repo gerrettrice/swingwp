@@ -1,56 +1,67 @@
 <?php get_header(); ?>
 
-<section id="hero_about" class="hero_image"></section>
+<!-- Hero Image - Post Thumbnail -->
+<?php if ( has_post_thumbnail()) : // Check if thumbnail exists ?>
+    <?php $backgroundImg = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'full' );?>
+    <section id="hero_about" class="hero_image" style="background: url('<?php echo $backgroundImg[0]; ?>') no-repeat;background-size: cover;background-position: center center;"></section>
+<?php endif; ?>
+<!-- /Hero Image - Post Thumbnail -->
 
 <div class="container">
 
-	<main role="main">
-	<!-- section -->
-	<section>
+    <div class="blog_grid">
 
-	<?php if (have_posts()): while (have_posts()) : the_post(); ?>
+        <div id="blog_container">
 
-		<!-- article -->
-		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+	           <main role="main">
+                	<!-- section -->
+                	<section>
 
-			<!-- post title -->
-			<h1 class="page_header"><?php the_title(); ?></h1>
-			<!-- /post title -->
+                	<?php if (have_posts()): while (have_posts()) : the_post(); ?>
 
-			<!-- post details -->
-			<span class="date"><?php the_time('F j, Y'); ?></span>
+                		<!-- article -->
+                		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-			<?php the_content(); // Dynamic Content ?>
+                            <!-- post title -->
+                            <h1 class="page_header"><?php the_title(); ?></h1>
+                            <!-- /post title -->
 
-            <p><?php _e( 'Categorised in: ', 'html5blank' ); the_category(', '); // Separated by commas ?></p>
+                			<!-- post details -->
+                			<span class="date"><?php the_time('F j, Y'); ?></span>
 
-            <?php edit_post_link(); // Always handy to have Edit Post Links available ?>
+                			<?php the_content(); // Dynamic Content ?>
 
-            <?php comments_template(); ?>
+                            <?php edit_post_link(); // Always handy to have Edit Post Links available ?>
 
-		</article>
-		<!-- /article -->
+                            <?php comments_template(); ?>
 
-	<?php endwhile; ?>
+                		</article>
+                		<!-- /article -->
 
-	<?php else: ?>
+                	<?php endwhile; ?>
 
-		<!-- article -->
-		<article>
+                	<?php else: ?>
 
-			<h1><?php _e( 'Sorry, nothing to display.', 'html5blank' ); ?></h1>
+                		<!-- article -->
+                		<article>
 
-		</article>
-		<!-- /article -->
+                			<h1><?php _e( 'Sorry, nothing to display.', 'html5blank' ); ?></h1>
 
-	<?php endif; ?>
+                		</article>
+                		<!-- /article -->
 
-	</section>
-	<!-- /section -->
-	</main>
+                	<?php endif; ?>
+
+                	</section>
+                	<!-- /section -->
+                	</main>
+
+                </div>
+
+                <?php get_sidebar(); ?>
+
+            </div>
 
 </div>
-
-<?php get_sidebar(); ?>
 
 <?php get_footer(); ?>

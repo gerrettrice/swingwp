@@ -4,43 +4,63 @@ Template Name: Home
 */
 get_header(); ?>
 
-<section class="slider">
+<!-- Slider -->
+
+	<section class="slider">
 
         <div class="fade">
 
-            <div id="frame1" class="slider_frame">
-                <div class="black_gradient"></div>
-                <div class="slider_content">
-                    <h1 class="slider_heading">Start Swinging Today</h1>
-                    <p class="slider_text">This is where the subtext will go, explaining why this thing deserves to be on a main slider.
-                    </p>
-                    <a class="slider_button" href="#">Learn More</a>
-                </div>
-            </div>
+            <!-- Slider -->
 
-            <div id="frame2" class="slider_frame">
-                <div class="black_gradient"></div>
-                <div class="slider_content">
-                    <h1 class="slider_heading">Professional Pro Staff Trainers</h1>
-                    <p class="slider_text">This is where the subtext will go, explaining why this thing deserves to be on a main slider.
-                    </p>
-                    <a class="slider_button" href="#">Learn More</a>
-                </div>
-            </div>
+            	<section class="slider">
 
-            <div id="frame3" class="slider_frame">
-                <div class="black_gradient"></div>
-                <div class="slider_content">
-                    <h1 class="slider_heading">Little League Champions</h1>
-                    <p class="slider_text">This is where the subtext will go, explaining why this thing deserves to be on a main slider.
-                    </p>
-                    <a class="slider_button" href="#">Learn More</a>
-                </div>
-            </div>
+                    <div class="fade">
+
+                        <?php query_posts('category_name=featured-content'); ?>
+                        <?php if (have_posts()): while (have_posts()) : the_post(); ?>
+
+                            <!-- post thumbnail -->
+                            <?php if ( has_post_thumbnail()) : // Check if thumbnail exists ?>
+                                <?php $backgroundImg = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'full' );?>
+                                    <div class="slider_frame" id="post-<?php the_ID(); ?>" <?php post_class(); ?> class="slider_frame" style="background: url('<?php echo $backgroundImg[0]; ?>') no-repeat;background-size: cover;background-position: center center;">
+
+                                        <!-- Gradient -->
+                                        <div class="black_gradient"></div>
+
+                                        <!-- Slider Content -->
+                                        <div class="slider_content">
+
+                                            <!-- Post Title -->
+                                            <h1 class="slider_heading">
+                                                <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a>
+                                            </h1>
+
+                                            <!-- Post Excerpt -->
+                                            <p class="slider_text">
+                                                <?php slider_excerpt('slider_excerpt_length'); // Build your custom callback length in functions.php ?>
+                                            </p>
+
+                                            <!-- Read More Button -->
+                                            <a class="slider_button" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">Read More</a>
+
+                                        </div>
+
+                                    </div>
+                            <?php endif; ?>
+
+                        <?php endwhile; endif; ?>
+
+                    </div>
+
+            	</section>
+
+            <!-- End Slider -->
 
         </div>
 
-</section>
+	</section>
+
+<!-- End Slider -->
 
 <div class="grid">
     <div class="box">

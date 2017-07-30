@@ -16,9 +16,6 @@
 		<link href="//www.google-analytics.com" rel="dns-prefetch">
         <link href="<?php echo get_template_directory_uri(); ?>/img/icons/touch.png" rel="apple-touch-icon-precomposed">
 
-        <!-- Favicon -->
-        <link rel="icon" type="image/x-icon" href="img/favicon-32x32.png" />
-
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:400,600,600i" rel="stylesheet">
 
@@ -26,6 +23,9 @@
 
     </head>
     <body <?php body_class(); ?>>
+
+        <!-- Google Analytics -->
+        <?php include_once("analyticstracking.php") ?>
 
         <header>
 
