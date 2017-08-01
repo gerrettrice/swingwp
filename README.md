@@ -1,6 +1,7 @@
 # Site Explanation
 
-This website was developed for a baseball and softball training center for a grad school project. The two pages feature:
+This WordPress website was developed for a baseball and softball training center for a grad school project. The site features:
+
 
 * Responsive design for mobile, tablet, laptop, and desktop.
 
