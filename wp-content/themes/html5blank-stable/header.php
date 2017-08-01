@@ -19,6 +19,10 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:400,600,600i" rel="stylesheet">
 
+        <!-- jQuery -->
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
         <?php wp_head(); ?>
 
     </head>

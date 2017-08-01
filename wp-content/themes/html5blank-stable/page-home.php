@@ -10,51 +10,39 @@ get_header(); ?>
 
         <div class="fade">
 
-            <!-- Slider -->
+            <?php query_posts('category_name=featured-content'); ?>
+            <?php if (have_posts()): while (have_posts()) : the_post(); ?>
 
-            	<section class="slider">
+                <!-- post thumbnail -->
+                <?php if ( has_post_thumbnail()) : // Check if thumbnail exists ?>
+                    <?php $backgroundImg = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'full' );?>
+                        <div class="slider_frame" id="post-<?php the_ID(); ?>" <?php post_class(); ?> class="slider_frame" style="background: url('<?php echo $backgroundImg[0]; ?>') no-repeat;background-size: cover;background-position: center center;">
 
-                    <div class="fade">
+                            <!-- Gradient -->
+                            <div class="black_gradient"></div>
 
-                        <?php query_posts('category_name=featured-content'); ?>
-                        <?php if (have_posts()): while (have_posts()) : the_post(); ?>
+                            <!-- Slider Content -->
+                            <div class="slider_content">
 
-                            <!-- post thumbnail -->
-                            <?php if ( has_post_thumbnail()) : // Check if thumbnail exists ?>
-                                <?php $backgroundImg = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'full' );?>
-                                    <div class="slider_frame" id="post-<?php the_ID(); ?>" <?php post_class(); ?> class="slider_frame" style="background: url('<?php echo $backgroundImg[0]; ?>') no-repeat;background-size: cover;background-position: center center;">
+                                <!-- Post Title -->
+                                <h1 class="slider_heading">
+                                    <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a>
+                                </h1>
 
-                                        <!-- Gradient -->
-                                        <div class="black_gradient"></div>
+                                <!-- Post Excerpt -->
+                                <p class="slider_text">
+                                    <?php slider_excerpt('slider_excerpt_length'); // Build your custom callback length in functions.php ?>
+                                </p>
 
-                                        <!-- Slider Content -->
-                                        <div class="slider_content">
+                                <!-- Read More Button -->
+                                <a class="slider_button" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">Read More</a>
 
-                                            <!-- Post Title -->
-                                            <h1 class="slider_heading">
-                                                <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a>
-                                            </h1>
+                            </div>
 
-                                            <!-- Post Excerpt -->
-                                            <p class="slider_text">
-                                                <?php slider_excerpt('slider_excerpt_length'); // Build your custom callback length in functions.php ?>
-                                            </p>
+                        </div>
+                <?php endif; ?>
 
-                                            <!-- Read More Button -->
-                                            <a class="slider_button" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">Read More</a>
-
-                                        </div>
-
-                                    </div>
-                            <?php endif; ?>
-
-                        <?php endwhile; endif; ?>
-
-                    </div>
-
-            	</section>
-
-            <!-- End Slider -->
+            <?php endwhile; endif; ?>
 
         </div>
 
@@ -63,26 +51,29 @@ get_header(); ?>
 <!-- End Slider -->
 
 <div class="grid">
-    <div class="box">
-        <h2>Facility Specs</h2>
-        <hr class="box_hr"/>
-        <p>Rempere estrum nis in conseque con re as quam, que nobit omnitist aut fugitibus nostium alic totate rescien ecestrum eum reperae. Ditionsed quiberf erepuda estibus, vollenis soluptas asitempore odit pla pa dia im lam reperio. Et et, ut ut etum cusda saperchitis aditatem et, que quam volores torporum quunda verumquatum recatur.</p>
-        <a class="button" href="#">Learn More</a>
-    </div>
+    <!-- Custom Post Type - Home Content -->
 
-    <div class="box">
-        <h2>Pro Staff Trainers</h2>
-        <hr class="box_hr"/>
-        <p>Rempere estrum nis in conseque con re as quam, que nobit omnitist aut fugitibus nostium alic totate rescien ecestrum eum reperae. Ditionsed quiberf erepuda estibus, vollenis soluptas asitempore odit pla pa dia im lam reperio. Et et, ut ut etum cusda saperchitis aditatem et, que quam volores torporum quunda verumquatum recatur.</p>
-        <a class="button" href="#">Learn More</a>
-    </div>
+    <?php $query = new WP_Query( array(
+        'posts_per_page' => '-1',
+        'post_type' => 'home_content'
+    ) );
+    if ($query->have_posts()) : ?>
 
-    <div class="box">
-        <h2>Training Options</h2>
-        <hr class="box_hr"/>
-        <p>Rempere estrum nis in conseque con re as quam, que nobit omnitist aut fugitibus nostium alic totate rescien ecestrum eum reperae. Ditionsed quiberf erepuda estibus, vollenis soluptas asitempore odit pla pa dia im lam reperio. Et et, ut ut etum cusda saperchitis aditatem et, que quam volores torporum quunda verumquatum recatur.</p>
-        <a class="button" href="#">Learn More</a>
-    </div>
+        <?php while ($query->have_posts()) : $query->the_post(); ?>
+
+            <div class="box">
+                <h2><?php the_title(); ?></h2>
+                <hr class="box_hr"/>
+                <?php the_content(); ?>
+                <a class="button" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">Learn More</a>
+            </div>
+
+        <?php endwhile; ?>
+
+        </div>
+
+    <?php endif; ?>
+    <!-- End of Custom Post Type -->
 
 </div>
 

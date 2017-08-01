@@ -308,16 +308,16 @@ function slider_excerpt($length_callback = '', $more_callback = '')
 }
 
 // Custom View Article link to Post
-// function html5_blank_view_article($more)
-// {
-//     global $post;
-//     return '... <a class="view-article" href="' . get_permalink($post->ID) . '">' . __('<br/> Read More', 'html5blank') . '</a>';
-// }
+function html5_blank_view_article($more)
+{
+    global $post;
+    return '... <a class="view-article" href="' . get_permalink($post->ID) . '">' . __('<br/> Read More', 'html5blank') . '</a>';
+}
 
 // Remove Admin bar
 function remove_admin_bar()
 {
-    return true;
+    return false;
 }
 
 // Remove 'text/css' from our enqueued stylesheet
@@ -488,7 +488,6 @@ function create_post_type_html5()
         )
       );
 
-
     // Custom Post Type -- Teams
 
         register_post_type( 'teams',
@@ -545,6 +544,8 @@ function create_post_type_html5()
             )
         );
 
+        // Custom Post Type - Service
+
         register_post_type( 'service',
           array(
             'labels' => array(
@@ -570,6 +571,34 @@ function create_post_type_html5()
             'has_archive'   => false,
           )
         );
+
+        /* Custom Post Type - */
+
+        register_post_type( 'home_content',
+          array(
+            'labels' => array(
+                'name'               => _x( 'Home Content', 'post type general name' ),
+                'singular_name'      => _x( 'Home Content', 'post type singular name' ),
+                'add_new'            => _x( 'Add New', 'Home Content' ),
+                'add_new_item'       => __( 'Add New Home Content' ),
+                'edit_item'          => __( 'Edit Home Content' ),
+                'new_item'           => __( 'New Home Content' ),
+                'all_items'          => __( 'All Home Content' ),
+                'view_item'          => __( 'View Home Content' ),
+                'search_items'       => __( 'Search Home Content' ),
+                'not_found'          => __( 'Home Content found' ),
+                'not_found_in_trash' => __( 'Home Content found in the Trash' ),
+                'parent_item_colon'  => '',
+                'menu_name'          => 'Home Content'
+            ),
+            'description'   => 'Content featured on the homepage below slider',
+            'hierarchical'  => true,
+            'public'        => true,
+            'menu_position' => 9,
+            'supports'      => array( 'title', 'editor', 'thumbnail', 'excerpt', 'comments' ),
+            'has_archive'   => false,
+          )
+      );
 }
 
 /*------------------------------------*\

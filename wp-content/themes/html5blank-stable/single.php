@@ -9,6 +9,10 @@
 
 <div class="container">
 
+    <!-- post title -->
+    <h1 class="page_header"><?php the_title(); ?></h1>
+    <!-- /post title -->
+
     <div class="blog_grid">
 
         <div id="blog_container">
@@ -21,13 +25,6 @@
 
                 		<!-- article -->
                 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-
-                            <!-- post title -->
-                            <h1 class="page_header"><?php the_title(); ?></h1>
-                            <!-- /post title -->
-
-                			<!-- post details -->
-                			<span class="date"><?php the_time('F j, Y'); ?></span>
 
                 			<?php the_content(); // Dynamic Content ?>
 

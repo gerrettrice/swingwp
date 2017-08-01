@@ -55,6 +55,10 @@ p {
     color: #454545;
 }
 
+article p {
+    margin-bottom: 2rem;
+}
+
 p.bold {
     font-weight: 600;
 }
@@ -120,6 +124,7 @@ nav a {
     text-transform: uppercase;
     color: white;
     transition: all 0.25s ease-in-out;
+    outline: none;
 }
 
 nav a:hover {
@@ -129,6 +134,10 @@ nav a:hover {
 section.slider {
     display: block;
     margin-bottom: 1rem;
+}
+
+.view-article {
+    display: none;
 }
 
 .black_gradient {
@@ -366,6 +375,7 @@ section.teams {
     background-size: cover;
     background-position: center center;
     height: 250px;
+    margin-bottom: 1rem;
 }
 
 .post_title a {
@@ -400,9 +410,13 @@ table {
 }
 
 td, th {
-    border: 1px solid #dddddd;
+    border: 1px solid darkgrey;
     text-align: left;
-    padding: 0.5rem;
+    padding: 0.75rem;
+}
+
+.service {
+    width: 25%;
 }
 
 tr:nth-child(even) {
@@ -433,6 +447,11 @@ tr:nth-child(even) {
 .sidebar-widget div ul li a {
     color: black;
     text-decoration: none;
+    transition: 100ms ease-out all;
+}
+
+.sidebar-widget div ul li a:hover {
+    color: #cc0000;
 }
 
 @media screen and (min-width: 750px) {
@@ -487,6 +506,7 @@ textarea {
 
 .social_bar {
     margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
 .social_bar a {

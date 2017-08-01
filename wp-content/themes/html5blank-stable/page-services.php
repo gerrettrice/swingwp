@@ -29,7 +29,7 @@ get_header(); ?>
         <table>
 
           <tr>
-            <th><h3>Service</h3></th>
+            <th class="service"><h3>Service</h3></th>
             <th><h3>Description</h3></th>
           </tr>
 
